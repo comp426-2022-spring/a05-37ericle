@@ -6,9 +6,9 @@ const app = express()
 
 const args = require('minimist')(process.argv.slice(2));
 // Require database SCRIPT file
-const logdb = require('.src/services/database')
+const logdb = require('./src/services/database')
 // Require md5 MODULE
-const md5 = require('md5')
+// const md5 = require('md5')
 // Make Express use its own built-in body parser for both urlencoded and JSON body data. 
 app.use(express.urlencoded({ extended: true}))
 app.use(express.json())
@@ -60,6 +60,18 @@ app.get('/app/flip', (req, res) => {
     res.json({'flip': coinFlip()})
 })
 
+app.get('/app/flips/:number', (req, res, next) => {
+    const flipsArray = coinFlips(req.params.number)
+    const count = countFlips(flipsArray)
+    res.status(200).json({'raw': flipsArray, 'summary': count})
+    // next()?
+})
+
+app.get('/app/flip/call/:guess(heads|tails)/', (req, res, next) => {
+    const game = flipACoin(req.params.guess)
+    res.status(200).json(game)
+})
+
 app.post('/app/flips/coins', (req, res, next) => {
     const flipsArray = coinFlips(req.body.number)
     const count = countFlips(flipsArray)
@@ -67,16 +79,22 @@ app.post('/app/flips/coins', (req, res, next) => {
     // next()?
 })
 
-app.post('/app/flip/call', (req, resnext) => {
+app.post('/app/flip/call', (req, res, next) => {
     const game = flipACoin(req.body.guess)
     res.status(200).json(game)
     // next()?
 })
 
+// app.get('/app/flip/call/heads', (req, res) => {
+//     res.status(200)
+//     res.json(flipACoin("heads"))
+// })
+
 // app.get('/app/flip/call/tails', (req, res) => {
 //     res.status(200)
 //     res.json(flipACoin("tails"))
 // })
+
 if (args.debug) {
   app.get('/app/log/access', (req, res) => {
     try {
