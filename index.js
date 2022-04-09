@@ -60,21 +60,23 @@ app.get('/app/flip', (req, res) => {
     res.json({'flip': coinFlip()})
 })
 
-app.get('/app/flips/:number', (req, res) => {
-    res.status(200)
-    var flipsArray = coinFlips(req.params.number)
-    res.json({'raw': flipsArray, 'summary': countFlips(flipsArray)})
+app.post('/app/flips/coins', (req, res, next) => {
+    const flipsArray = coinFlips(req.body.number)
+    const count = countFlips(flipsArray)
+    res.status(200).json({'raw': flipsArray, 'summary': count})
+    // next()?
 })
 
-app.get('/app/flip/call/heads', (req, res) => {
-    res.status(200)
-    res.json(flipACoin("heads"))
+app.post('/app/flip/call', (req, resnext) => {
+    const game = flipACoin(req.body.guess)
+    res.status(200).json(game)
+    // next()?
 })
 
-app.get('/app/flip/call/tails', (req, res) => {
-    res.status(200)
-    res.json(flipACoin("tails"))
-})
+// app.get('/app/flip/call/tails', (req, res) => {
+//     res.status(200)
+//     res.json(flipACoin("tails"))
+// })
 if (args.debug) {
   app.get('/app/log/access', (req, res) => {
     try {
