@@ -64,7 +64,6 @@ app.get('/app/flips/:number', (req, res, next) => {
     const flipsArray = coinFlips(req.params.number)
     const count = countFlips(flipsArray)
     res.status(200).json({'raw': flipsArray, 'summary': count})
-    // next()?
 })
 
 app.get('/app/flip/call/:guess(heads|tails)/', (req, res, next) => {
@@ -76,13 +75,11 @@ app.post('/app/flips/coins', (req, res, next) => {
     const flipsArray = coinFlips(req.body.number)
     const count = countFlips(flipsArray)
     res.status(200).json({'raw': flipsArray, 'summary': count})
-    // next()?
 })
 
 app.post('/app/flip/call', (req, res, next) => {
     const game = flipACoin(req.body.guess)
     res.status(200).json(game)
-    // next()?
 })
 
 // app.get('/app/flip/call/heads', (req, res) => {
@@ -108,6 +105,8 @@ if (args.debug) {
     throw new Error('Error test successful.')
   })
 }
+
+
 
 // See what is stored in the object produced by minimist
 console.log(args)
