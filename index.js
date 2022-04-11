@@ -20,6 +20,10 @@ const fs = require('fs')
 var port = args['port']
 // Serve static HTML files
 app.use(express.static('./public'));
+// Add cors dependency
+const cors = require('cors')
+app.use(cors())
+
 // Start server
 const server = app.listen(port, () => {
     console.log('App listening on port %PORT%'.replace('%PORT%', port))
@@ -71,7 +75,7 @@ app.get('/app/flip/call/:guess(heads|tails)/', (req, res, next) => {
     res.status(200).json(game)
 })
 
-app.post('/app/flips/coins', (req, res, next) => {
+app.post('/app/flip/coins', (req, res, next) => {
     const flipsArray = coinFlips(req.body.number)
     const count = countFlips(flipsArray)
     res.status(200).json({'raw': flipsArray, 'summary': count})

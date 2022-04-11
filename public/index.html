@@ -24,36 +24,39 @@
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
+  <style>img#quarter {width:100px;}</style>
   </head>
   <body>
     <nav>
-      <button id="homenav">Home</button>
-      <button id="singlenav">Flip one coin</button>
-      <button id="multinav">Flip multiple coins</button>
-      <button id="guessnav">Guess the result</button>
+      <button id="homenav" onclick="focusHomeMethod()">Home</button>
+      <button id="singlenav" onclick="focusSingleMethod()">Flip one coin</button>
+      <button id="multinav" onclick="focusMultiMethod()">Flip multiple coins</button>
+      <button id="guessnav" onclick="focusGuessMethod()">Guess the result</button>
     </nav>
     <div id="home">
-      
+      <h1>home</h1>
     </div>    
     <div id="single" class="hidden">
-      
+      <h1>Flip a coin</h1>
+      <button id="coin">Flip?</button>
+      <p>Result: <span id="result"></span></p>
+      <img src="./assets/img/coin.png" id="quarter">
     </div>
     <div id="multi" class="hidden">
       <h1>Flip many coins</h1>
       <form id="coins">
-        <label for="'number">
-          <strong>How many coins?</strong>
-        </label>
-        <input type="number" name="number" id="number">
-        <input type="submit" value="Flip 'em!">
+            <label for="number">
+              <strong>How many coins?</strong>
+            </label>
+            <input type="number" name="number" id="number">
+            <input type="submit" value="Flip 'em!">
       </form>
-
       <h2>Results</h2>
-        <p id="heads"></p>
-        <p id="tails"></p>
+          <p id="heads"></p>
+          <p id="tails"></p>
     </div>
     <div id="guess" class="hidden">
-      
+      <h1>guess</h1>
     </div>
 	<script src="main.js"></script>
   </body>

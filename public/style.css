@@ -2,6 +2,10 @@ div.hidden {
   display: none;
 }
 
+div.unhidden {
+  display: inline
+}
+
 div.active {
   border: 5px solid red;
 }
