@@ -82,19 +82,10 @@ app.post('/app/flip/coins', (req, res, next) => {
 })
 
 app.post('/app/flip/call', (req, res, next) => {
-    const game = flipACoin(req.body.guess)
+    const game = flipACoin(req.body.choice)
+    console.log(req.body.guess)
     res.status(200).json(game)
 })
-
-// app.get('/app/flip/call/heads', (req, res) => {
-//     res.status(200)
-//     res.json(flipACoin("heads"))
-// })
-
-// app.get('/app/flip/call/tails', (req, res) => {
-//     res.status(200)
-//     res.json(flipACoin("tails"))
-// })
 
 if (args.debug) {
   app.get('/app/log/access', (req, res) => {
@@ -192,18 +183,18 @@ let o = {call: call, flip: flip, result: result}
 return o;
 }  
 
-function flipACoin(call) {
-  let result = "";
-  let flip = (Math.floor(Math.random() * 2) == 0) ? "heads" : "tails";
-  if (flip == call) {
-    result = "win"
-  }
-  else {
-    result = "lose"
-  }
-  let o = {call: call, flip: flip, result: result}
-  return o;
-}
+// function flipACoin(call) {
+//   let result = "";
+//   let flip = (Math.floor(Math.random() * 2) == 0) ? "heads" : "tails";
+//   if (flip == call) {
+//     result = "win"
+//   }
+//   else {
+//     result = "lose"
+//   }
+//   let o = {call: call, flip: flip, result: result}
+//   return o;
+// }
 
 app.use(function(req, res){
   res.status(404).send('404 NOT FOUND')

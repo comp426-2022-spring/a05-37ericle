@@ -11,9 +11,13 @@ div.active {
 }
 
 img.bigcoin {
-  width: 50px;
+  width: 100px;
 }
 
 img.smallcoin {
   width: 50px;
+}
+
+img#homequarter {
+  width: 200px;
 }

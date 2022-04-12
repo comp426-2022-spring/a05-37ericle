@@ -24,7 +24,7 @@
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
-  <style>img#quarter {width:100px;}</style>
+  <!-- <style>img#quarter {width:100px;}</style> -->
   </head>
   <body>
     <nav>
@@ -34,13 +34,25 @@
       <button id="guessnav" onclick="focusGuessMethod()">Guess the result</button>
     </nav>
     <div id="home">
-      <h1>home</h1>
+      <h1>Coin flip simulator</h1>
+      <img src="./assets/img/coin.png" id="homequarter">
+      <h2>Flip a coin</h2>
+      <p>Flip one coin at a time by using the "Flip a coin" navigation buttons at the top of the screen.</p>
+      <h2>Flip multiple coins</h2>
+      <p>If you want to flip multiple coins at a time, use the "Flip many coins" navigation button at the top of the screen.
+        Type in the amount of coins you want to flip and press "Flip 'em!"
+        The amount of heads and tails will display on the screen for you.
+      </p>
+      <h2>Guess the outcome</h2>
+      <p>If you want to test your ability to guess a coin flip, use the "Guess the result" navigation button at the top of the screen.
+        Type in your guess and press "flip!" The result of the flip and the outcome of the guess will display on the screen.
+      </p>
     </div>    
     <div id="single" class="hidden">
       <h1>Flip a coin</h1>
       <button id="coin">Flip?</button>
       <p>Result: <span id="result"></span></p>
-      <img src="./assets/img/coin.png" id="quarter">
+      <img src="./assets/img/coin.png" class="bigcoin">
     </div>
     <div id="multi" class="hidden">
       <h1>Flip many coins</h1>
@@ -56,7 +68,17 @@
           <p id="tails"></p>
     </div>
     <div id="guess" class="hidden">
-      <h1>guess</h1>
+      <h1>Guess the result</h1>
+      <form id="guessform">
+        <label for="number">
+          <strong>Heads or tails?</strong>
+          <input type="text" name="choice" id="choice">
+          <input type="submit" value="Flip coin!">
+        </label>
+      </form>
+      <h2>Results</h2>
+          <p id="guessresult"></p>
+          <p id="winorlose"></p>
     </div>
 	<script src="main.js"></script>
   </body>

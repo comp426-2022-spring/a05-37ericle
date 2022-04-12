@@ -97,3 +97,44 @@ const coin = document.getElementById("coin")
 				return response.json()
 			}
 // Guess a flip by clicking either heads or tails button
+// Our guess the flip form
+const guessform = document.getElementById("guessform")
+// Add event listener for coins form
+guessform.addEventListener("submit", flipCoins)
+// Create the submit handler
+async function flipCoins(event) {
+    event.preventDefault();
+    
+    const endpoint = "app/flip/call/"
+    const url = document.baseURI+endpoint
+
+    const formEvent = event.currentTarget
+    try {
+        const formData = new FormData(formEvent);
+        const flips = await sendFlips({ url, formData });
+
+        console.log(flips)
+        document.getElementById("guessresult").innerHTML = "Result: "+flips.flip;
+        document.getElementById("winorlose").innerHTML = "You "+flips.result;
+    } catch (error) {
+        console.log(error);
+    }
+}
+// Create a data sender
+async function sendFlips({ url, formData }) {
+    const plainFormData = Object.fromEntries(formData.entries());
+    const formDataJson = JSON.stringify(plainFormData);
+    console.log(formDataJson);
+
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+        },
+        body: formDataJson
+    };
+
+    const response = await fetch(url, options);
+    return response.json()
+}
