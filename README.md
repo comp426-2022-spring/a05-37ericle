@@ -136,26 +136,6 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 ```
 
-### /app/flip/coin/ (GET)
-
-#### Request cURL
-
-```
-
-```
-
-#### Response body
-
-```
-
-```
-
-#### Response headers
-
-```
-
-```
-
 ### /app/flip/call/:guess/ (GET)
 
 #### Request cURL
