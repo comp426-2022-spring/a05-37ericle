@@ -182,19 +182,6 @@ let o = {call: call, flip: flip, result: result}
 return o;
 }  
 
-// function flipACoin(call) {
-//   let result = "";
-//   let flip = (Math.floor(Math.random() * 2) == 0) ? "heads" : "tails";
-//   if (flip == call) {
-//     result = "win"
-//   }
-//   else {
-//     result = "lose"
-//   }
-//   let o = {call: call, flip: flip, result: result}
-//   return o;
-// }
-
 app.use(function(req, res){
   res.status(404).send('404 NOT FOUND')
   res.type('text/plain')
