@@ -48,7 +48,6 @@ const coin = document.getElementById("coin")
 					console.log(result);
 					document.getElementById("result").innerHTML = result.flip;
 					document.getElementById("quarter").setAttribute("src", "./assets/img/" +result.flip+".png");
-					//coin.disabled = true
 				})
             }
 // Flip multiple coins and show coin images in table as well as summary results
@@ -116,6 +115,7 @@ async function guessCoins(event) {
         console.log(flips)
         document.getElementById("guessresult").innerHTML = "Result: "+flips.flip;
         document.getElementById("winorlose").innerHTML = "You "+flips.result;
+        document.getElementById("blankcoin").setAttribute("src", "./assets/img/" +flips.flip+".png");
     } catch (error) {
         console.log(error);
     }
