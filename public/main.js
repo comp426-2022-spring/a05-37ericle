@@ -100,9 +100,9 @@ const coin = document.getElementById("coin")
 // Our guess the flip form
 const guessform = document.getElementById("guessform")
 // Add event listener for coins form
-guessform.addEventListener("submit", flipCoins)
+guessform.addEventListener("submit", guessCoins)
 // Create the submit handler
-async function flipCoins(event) {
+async function guessCoins(event) {
     event.preventDefault();
     
     const endpoint = "app/flip/call/"
