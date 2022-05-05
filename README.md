@@ -84,19 +84,29 @@ Keep-Alive: timeout=5
 #### Request cURL
 
 ```
+curl http://localhost:5000/app/flip/
 
 ```
 
 #### Response body
 
 ```
-
+{"flip":"tails"}
+or
+{"flip":"heads"}
 ```
 
 #### Response headers
 
 ```
-
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: text/plain; charset=utf-8
+Content-Length: 16
+ETag: W/"10-VYm8Bk1/RW8RGhDXdTwBYk6lbGE"
+Date: Sat, 09 Apr 2022 23:26:36 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
 ```
 
 ### /app/flips/:number/ (GET)
@@ -104,39 +114,26 @@ Keep-Alive: timeout=5
 #### Request cURL
 
 ```
-
+curl  http://localhost:5000/app/flips/5
 ```
 
 #### Response body
 
 ```
-
+{"raw":["tails","tails","tails","tails","heads"],"summary":{"heads":1,"tails":4}}
 ```
 
 #### Response headers
 
 ```
-
-```
-
-### /app/flip/coin/ (GET)
-
-#### Request cURL
-
-```
-
-```
-
-#### Response body
-
-```
-
-```
-
-#### Response headers
-
-```
-
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 81
+ETag: W/"51-B5paLfq6SFRUnkytwGxxVqsjsxw"
+Date: Sat, 09 Apr 2022 23:28:10 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
 ```
 
 ### /app/flip/call/:guess/ (GET)
@@ -144,19 +141,26 @@ Keep-Alive: timeout=5
 #### Request cURL
 
 ```
-
+curl http://localhost:5000/app/flip/call/heads
 ```
 
 #### Response body
 
 ```
-
+{"call":"heads","flip":"tails","result":"lose"}
 ```
 
 #### Response headers
 
 ```
-
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 47
+ETag: W/"2f-7jHpBxeRlMwmX45a5nEiITPVllI"
+Date: Sat, 09 Apr 2022 23:31:23 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
 ```
 
 ### /app/flip/call/ (POST)
@@ -218,39 +222,27 @@ Keep-Alive: timeout=5
 #### Request cURL
 
 ```
-
+curl http://localhost:5000/app/log/access
 ```
 
 #### Response body
 
 ```
-
+[{"id":1,"remoteaddr":"::1","remoteuser":null,"datetime":"1649639100617.0","method":"POST","url":"/?number=2app/flip/coins/","protocol":"http","httpversion":1.1,"secure":200,"status":null,"referer":"http://localhost:5000/?number=2","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36"},{"id":2,"remoteaddr":"::1","remoteuser":null,"datetime":"1649639539239.0","method":"POST","url":"/?number=2app/flip/coins/","protocol":"http","httpversion":1.1,"secure":200,"status":null,"referer":"http://localhost:5000/?number=2","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36"},{"id":3,"remoteaddr":"::1","remoteuser":null,"datetime":"1649639952993.0","method":"POST","url":"/?number=2app/flip/coins/","protocol":"http","httpversion":1.1,"secure":200,"status":null,"referer":"http://localhost:5000/?number=2","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36"},{"id":4,"remoteaddr":"::1","remoteuser":null,"datetime":"1649640032486.0","method":"POST","url":"/?number=2app/flip/coins/","protocol":"http","httpversion":1.1,"secure":200,"status":null,"referer":"http://localhost:5000/?number=2","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36"},{"id":5,"remoteaddr":"::1","remoteuser":null,"datetime":"1649640035355.0","method":"POST","url":"/?number=2app/flip/coins/","protocol":"http","httpversion":1.1,"secure":200,"status":null,"referer":"http://localhost:5000/?number=2","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36"},{"id":6,"remoteaddr":"::1","remoteuser":null,"datetime":"1649640055392.0","method":"POST","url":"/?number=2app/flip/coins/","protocol":"http","httpversion":1.1,"secure":200,"status":null,"referer":"http://localhost:5000/?number=2","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36"},{"id":7,"remoteaddr":"::1","remoteuser":null,"datetime":"1649640062145.0","method":"POST","url":"/?number=2app/flip/coins/","protocol":"http","httpversion":1.1,"secure":200,"status":null,"referer":"http://localhost:5000/?number=2","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36"},{"id":8,"remoteaddr":"::1","remoteuser":null,"datetime":"1649707450484.0","method":"POST","url":"/?choice=headsapp/flip/call/","protocol":"http","httpversion":1.1,"secure":200,"status":null,"referer":"http://localhost:5000/?choice=heads","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36"},{"id":9,"remoteaddr":"::1","remoteuser":null,"datetime":"1649707452002.0","method":"POST","url":"/?choice=headsapp/flip/call/","protocol":"http","httpversion":1.1,"secure":200,"status":null,"referer":"http://localhost:5000/?choice=heads","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36"},{"id":10,"remoteaddr":"::1","remoteuser":null,"datetime":"1649707452841.0","method":"POST","url":"/?choice=headsapp/flip/call/","protocol":"http","httpversion":1.1,"secure":200,"status":null,"referer":"http://localhost:5000/?choice=heads","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36"},{"id":11,"remoteaddr":"::1","remoteuser":null,"datetime":"1649708782783.0","method":"POST","url":"/?choice=headsapp/flip/call/","protocol":"http","httpversion":1.1,"secure":200,"status":null,"referer":"http://localhost:5000/?choice=heads","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36"},{"id":12,"remoteaddr":"::1","remoteuser":null,"datetime":"1649709267739.0","method":"POST","url":"/?choice=headsapp/flip/call/","protocol":"http","httpversion":1.1,"secure":200,"status":null,"referer":"http://localhost:5000/?choice=heads","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36"}
 ```
 
 #### Response headers
 
 ```
-
-```
-
-### /app/log/access/ (GET)
-
-#### Request cURL
-
-```
-
-```
-
-#### Response body
-
-```
-
-```
-
-#### Response headers
-
-```
-
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 4753
+ETag: W/"1291-h9WEXdUFSRY0CyIQSWTxMy0+RPU"
+Date: Tue, 26 Apr 2022 22:54:45 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
 ```
 
 ### /app/log/error/ (GET)

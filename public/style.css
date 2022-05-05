@@ -2,14 +2,22 @@ div.hidden {
   display: none;
 }
 
+div.unhidden {
+  display: inline
+}
+
 div.active {
   border: 5px solid red;
 }
 
 img.bigcoin {
-  width: 50px;
+  width: 100px;
 }
 
 img.smallcoin {
   width: 50px;
+}
+
+img#homequarter {
+  width: 200px;
 }
